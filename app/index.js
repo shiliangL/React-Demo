@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import RouteMap from './router/RouteMap'
-import { hashHistory } from 'react-router'
-import './static/css/layout.less'
 import { Provider } from 'react-redux'
-import configStore from './store/configStore'
-const store = configStore()
-
+import { createStore } from 'redux'
+import reducers from './reducers/index';
+const store = createStore(reducers)
+import App from "./components/app";
 ReactDOM.render(
   <Provider store={store}>
-    <RouteMap history={ hashHistory }/>
+    <App/>
   </Provider>,
   document.getElementById('content')
 );
